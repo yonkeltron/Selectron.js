@@ -32,7 +32,7 @@ selectron.util.object_match = function object_match(object, template) {
             if (_.isFunction(value)) {
                 // record the function's result
                 matches = value(object[key]);
-            } else if ( !(value === object[key]) ) { // if the properties aren't equal, set false
+            } else if ( !_.isEqual(value, object[key]) ) { // if the properties aren't equal, set false
                 matches = false;
             }
 
