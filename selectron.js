@@ -27,8 +27,17 @@ selectron.util.object_match = function object_match(object, template) {
         _(template).chain()
         .keys()
         .each( function (key) {
-            if ( !(template[key] === object[key]) ) { // if the properties aren't equal, set false and break
+            var value = template[key];
+            // if the template property is a function
+            if (_.isFunction(value)) {
+                // record the function's result
+                matches = value(object[key]);
+            } else if ( !(value === object[key]) ) { // if the properties aren't equal, set false
                 matches = false;
+            }
+
+            // if false, then break
+            if (!matches) {
                 _.breakLoop();
             }
         });
