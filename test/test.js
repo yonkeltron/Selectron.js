@@ -80,3 +80,31 @@ test("key checking with selectron.util.has_keys", function () {
        "has_keys fails given incorrect keys");
     
 });
+
+module("selectron.select");
+
+test("selectron.select", function () {
+    var test_data;
+    ok(selectron.select, "selectron.select exists");
+    ok(_.isFunction(selectron.select), "selectron.select is a function");
+
+    test_data = [
+        test_obj,
+        test_obj,
+        test_obj,
+        {panda: 2,
+         bamboo: 2}
+    ];
+
+    equal(selectron.select(test_data, {panda: 1}).length, 
+          3);
+
+    equal(selectron.select(test_data, {chocolate: 'not there, yo'}).length,
+          0);
+
+    equal(selectron.select(test_data, {bamboo: 2}).length,
+          test_data.length);
+
+    equal(selectron.select(test_data, {panda: function (e) { return e === 2; } }).length,
+                           1);
+});

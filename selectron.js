@@ -46,3 +46,9 @@ selectron.util.object_match = function object_match(object, template) {
     }
     return matches;
 };
+
+selectron.select = function select(collection, template_object) {
+    return _(collection).select( function (element) {
+        return selectron.util.object_match(element, template_object);
+    });
+};
