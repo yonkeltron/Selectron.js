@@ -97,14 +97,18 @@ test("selectron.select", function () {
     ];
 
     equal(selectron.select(test_data, {panda: 1}).length, 
-          3);
+          3,
+         "returns proper number for one matching key/prop");
 
     equal(selectron.select(test_data, {chocolate: 'not there, yo'}).length,
-          0);
+          0,
+         "returns none for missing key");
 
     equal(selectron.select(test_data, {bamboo: 2}).length,
-          test_data.length);
+          test_data.length,
+         "returns all for universally matching key/prop");
 
     equal(selectron.select(test_data, {panda: function (e) { return e === 2; } }).length,
-                           1);
+          1,
+         "returns 1 for function which only matches one");
 });
