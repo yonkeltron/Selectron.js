@@ -15,10 +15,10 @@ test("selectron namespace", function () {
 module("Object matching");
 
 test("basic selectron.object_match", function () {
-    ok(selectron.util.object_match, 
+    ok(selectron.util.object_match,
        "selectron.util.object_match exists");
 
-    ok(_.isFunction(selectron.util.object_match), 
+    ok(_.isFunction(selectron.util.object_match),
        "selectron.util.object_match is a function");
 
     ok(selectron.util.object_match(test_obj, {panda: 1}),
@@ -78,7 +78,7 @@ test("key checking with selectron.util.has_keys", function () {
        "has_keys passes given correct keys");
     ok(!selectron.util.has_keys(test_obj, {panda: 'whatever', chocolate: 'missing'}),
        "has_keys fails given incorrect keys");
-    
+
 });
 
 module("selectron.select");
@@ -96,7 +96,7 @@ test("selectron.select", function () {
          bamboo: 2}
     ];
 
-    equal(selectron.select(test_data, {panda: 1}).length, 
+    equal(selectron.select(test_data, {panda: 1}).length,
           3,
          "returns proper number for one matching key/prop");
 
